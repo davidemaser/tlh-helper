@@ -111,6 +111,10 @@ This folder contains required third party scripts, styles or elements. When exte
 ```sh
 David Maser david.maser@altitude-sports.com
 ```
+###Contributors
+```sh
+Issac Moreno isam@adobe.com
+```
 ###Third Party Resources
 ```sh
 Please consult the package.json file for a list of third party resources and components used in this project.

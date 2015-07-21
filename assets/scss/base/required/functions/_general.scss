@@ -1,0 +1,10 @@
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+$grid-spacing:3%;
+%clearfix:after {
+  display:block;
+  clear:both;
+  content:'';
+}

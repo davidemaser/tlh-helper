@@ -1,0 +1,141 @@
+{
+  "name": "alti-bootstrap",
+  "author": [
+    {
+      "name": "David Maser"
+    },
+    {
+      "email": "david.maser@altitude-sports.com"
+    },
+    {
+      "organisation": "Altitude Sports"
+    }
+  ],
+  "collaborators": [
+    {
+      "user": [
+        {
+          "name": "Marjolaine Samson"
+        },
+        {
+          "email": "marjolaine.samson@altitude-sports.com"
+        },
+        {
+          "organisation": "Altitude Sports"
+        }
+      ]
+    }
+  ],
+  "role": [
+    {
+      "description": "CSS bootsrap model"
+    },
+    {
+      "scope": "site"
+    },
+    {
+      "usage": "By Authorization"
+    }
+  ],
+  "dependencies": [
+    {
+      "bootstrap": [
+        {
+          "limited": "glyphs"
+        },
+        {
+          "nested": true
+        },
+        {
+          "version": "3.3.5"
+        }
+      ]
+    },
+    {
+      "bourbon": [
+        {
+          "limited": "objects"
+        },
+        {
+          "nested": true
+        },
+        {
+          "version": "4.2.3"
+        }
+      ]
+    },
+    {
+      "bourbon": [
+        {
+          "limited": "mixins"
+        },
+        {
+          "nested": true
+        },
+        {
+          "version": "4.2.3"
+        }
+      ]
+    },
+    {
+      "jquery": [
+        {
+          "limited": "js functions"
+        },
+        {
+          "nested": false
+        },
+        {
+          "version": "2.1.4"
+        }
+      ]
+    },
+    {
+      "materialize": [
+        {
+          "limited": "js effects"
+        },
+        {
+          "nested": false
+        },
+        {
+          "version": "0.97.0"
+        }
+      ]
+    },
+    {
+      "custom javascript": [
+        {
+          "limited": "project"
+        },
+        {
+          "nested": false
+        },
+        {
+          "version": "1.0.1"
+        }
+      ]
+    },
+    {
+      "scope": "site"
+    },
+    {
+      "usage": "By Authorization"
+    }
+  ],
+  "version": "0.0.1",
+  "release": [
+    {
+      "type": "internal"
+    },
+    {
+      "compiled": true
+    },
+    {
+      "scss": true
+    },
+    {
+      "requires": "compass"
+    }
+  ]
+}

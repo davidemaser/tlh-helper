@@ -1,0 +1,85 @@
+#Altitude Bootstrap
+
+This compiled styles and javascript library is a development SCSS bootstrap for style and function development within the Altitude-Sports web sites. 
+
+> Contains seperate scss files for ui and global elements
+> seperated into unique callable css properties. 
+> Uses a normalized grid system.
+> Function based jQuery plugins.
+> Minified JS output
+
+###Version 
+
+1.0.1
+
+###Project Structure
+- project root
+    - assets
+        - css (output non-distribution)
+        - fonts (required bootstrap and iso fonts)
+        - js (main altitude.js and minified files)
+        - json (unuesed)
+        - less (less compiled stylesheet)
+        - sass (sass compiled css project)
+        - scss (main css file directory)
+            - base
+                - collaborate (collaborative commons directory)
+                - demo (base demo stylesheet)
+                - objects
+                - required
+                    - functions
+                    - mixins
+                    - settings
+                    - variables
+                - ui
+                    - components
+                        - blocks
+                        - buttons
+                        - dialogs
+                        - form
+                        - navigation-bar
+                        - popovers
+                        - tab-bar
+                    - elements
+
+    - dist (distribution directory)
+        - compiled (compiled output)
+        - demo
+            - css
+            - objects
+            - ui
+                - components
+                    - blocks
+                    - buttons
+                    - dialogs
+                    - form
+                    - navigation-bar
+                    - popovers
+                    - tab-bar
+    - src
+        - ionicons-2.0.1
+        - jquery
+        
+###Project Compilation
+Add or remove required files and components by including them in the globals.scss file. Set the output directory to dist -> compiled.
+
+###Extending The Bootstrap
+Add a working folder root to the scss -> collaborate folder (i.e. my-element) and create a compiler-ignored scss file containing custom styling classes (i.e. _my-new-element.scss). 
+> Add the new files to the globals.scss file and compile (see Project Compilation)
+
+###Demo Files
+All working demos can be found in the dist -> demo root. Demo files are all executable html with proper markup for using the specific ui element or component. 
+> Demo subfolders use the same explicit naming conventions as the scss files themselves. (i.e. the demo html for the ui > component > form > checkbox.scss file will be in the demo ui > component > form > checkbox.html file). 
+
+###Semantic Classes
+Custom classes use a common semantic format to make them easier to understand and implement. A good example of this is how the padding normalizer is marked up. To apply a 5 px padding to the horizontal borders of an element, you would associate a class called padding_5_horizontal. This allows us to avoid using complex compound selectors. Other elements use the same semantic markup.
+
+###Modifying Root SCSS Files
+You can modify any class or selector in the scss file root. Make sure to create a backup of the original scss file using the namig convention _original-file##backup.scss
+>It is recommended to create custom scss files in the collaborate root instead of modifying the existing scss files. You can add your custom scss in the globals.scss file and remove the association to the original file. 
+
+###Required Files
+All required files are found in the scss -> base -> required folder. They should always be called at the top of your globals scss file, right after the settings (if any). If this is not the case, variable and mixin definitions may now work properly. 
+
+###Color Palette
+A variable based color palette can be found in the scss -> base -> required -> variables -> colors folder. You can add new color codes or select the color palette you wish to include in your project by removing unused color variables from the globals scss file. 

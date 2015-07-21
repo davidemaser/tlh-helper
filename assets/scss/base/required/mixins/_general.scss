@@ -1,0 +1,284 @@
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+/*usage
+@include font-size(14px)
+*/
+@mixin background-opacity($color, $opacity: 0.5) {
+  background: $color;
+  background: rgba($color, $opacity);
+  /*usage @include background-opacity(#fff, 0.8); */
+}
+@mixin letterpress($opacity){
+  text-shadow:white($opacity) 0 1px 0;
+}
+@mixin text-shadow($h-shadow, $v-shadow, $blur-radius, $color){
+  text-shadow: $h-shadow $v-shadow $blur-radius $color;
+}
+@mixin box-emboss($opacity, $opacity2){
+  box-shadow:white($opacity) 0 1px 0, inset black($opacity2) 0 1px 0;
+  /*usage @include box-emboss(0.8, 0.05);*/
+}
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin abs-pos ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  position: absolute;
+  /*usage @include abs-pos(10px, 10px, 5px, 15px);*/
+}
+@mixin font-size($sizeValue: 12 ){
+  font-size: $sizeValue + px;
+  font-size: (0.125 * $sizeValue) + rem;
+  /*usage @include font-size(16);*/
+}
+@mixin line-height($heightValue: 12 ){
+  line-height: $heightValue + px; //fallback for old browsers
+  line-height: (0.125 * $heightValue) + rem;
+  /*usage @include line-height (16);*/
+}
+@mixin object-attribute($attribute, $color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  #{$attribute}: $solid-color;
+  #{$attribute}: $color;
+  /*usage @include object-attribute('background-color', rgba(black, 0.5), white);*/
+}
+@mixin border-radius ( $value: 3px ) {
+  -webkit-border-radius: $value;
+  -moz-border-radius: $value;
+  border-radius: $value;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+}
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin text-field {
+  display: inline-block;
+  outline: none;
+  text-decoration: none;
+  font: 14px/100% Arial, Helvetica, sans-serif;
+  padding: .5em;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+  @include rounded();
+  @include box-shadow(0, 1px, 2px, rgba(0, 0, 0, 0.2));
+}
+
+
+@mixin rounded($radius: 0.5em) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin button ($style: simple, $base-color: #4294f0, $text-size: inherit, $padding: 7px 18px) {
+
+  @if type-of($style) == string and type-of($base-color) == color {
+    @include buttonstyle($style, $base-color, $text-size, $padding);
+  }
+
+  @if type-of($style) == string and type-of($base-color) == number {
+    $padding: $text-size;
+    $text-size: $base-color;
+    $base-color: #4294f0;
+
+    @if $padding == inherit {
+      $padding: 7px 18px;
+    }
+
+    @include buttonstyle($style, $base-color, $text-size, $padding);
+  }
+
+  @if type-of($style) == color and type-of($base-color) == color {
+    $base-color: $style;
+    $style: simple;
+    @include buttonstyle($style, $base-color, $text-size, $padding);
+  }
+
+  @if type-of($style) == color and type-of($base-color) == number {
+    $padding: $text-size;
+    $text-size: $base-color;
+    $base-color: $style;
+    $style: simple;
+
+    @if $padding == inherit {
+      $padding: 7px 18px;
+    }
+
+    @include buttonstyle($style, $base-color, $text-size, $padding);
+  }
+
+  @if type-of($style) == number {
+    $padding: $base-color;
+    $text-size: $style;
+    $base-color: #4294f0;
+    $style: simple;
+
+    @if $padding == #4294f0 {
+      $padding: 7px 18px;
+    }
+
+    @include buttonstyle($style, $base-color, $text-size, $padding);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  @warn "The button mixin is deprecated and will be removed in the next major version release";
+}
+
+// Selector Style Button
+@mixin buttonstyle($type, $b-color, $t-size, $pad) {
+  // Grayscale button
+  @if $type == simple and $b-color == grayscale($b-color) {
+    @include simple($b-color, true, $t-size, $pad);
+  }
+
+  @if $type == shiny and $b-color == grayscale($b-color) {
+    @include shiny($b-color, true, $t-size, $pad);
+  }
+
+  @if $type == pill and $b-color == grayscale($b-color) {
+    @include pill($b-color, true, $t-size, $pad);
+  }
+
+  @if $type == flat and $b-color == grayscale($b-color) {
+    @include flat($b-color, true, $t-size, $pad);
+  }
+
+  // Colored button
+  @if $type == simple {
+    @include simple($b-color, false, $t-size, $pad);
+  }
+
+  @else if $type == shiny {
+    @include shiny($b-color, false, $t-size, $pad);
+  }
+
+  @else if $type == pill {
+    @include pill($b-color, false, $t-size, $pad);
+  }
+
+  @else if $type == flat {
+    @include flat($b-color, false, $t-size, $pad);
+  }
+}
+
+@mixin flat($base-color, $grayscale: false, $textsize: inherit, $padding: 7px 18px) {
+  $color:         hsl(0, 0, 100%);
+
+  @if is-light($base-color) {
+    $color:       hsl(0, 0, 20%);
+  }
+
+  background-color: $base-color;
+  border-radius: 3px;
+  border: 0;
+  color: $color;
+  display: inline-block;
+  font-size: $textsize;
+  font-weight: bold;
+  padding: $padding;
+  text-decoration: none;
+  background-clip: padding-box;
+
+  &:hover:not(:disabled){
+    $base-color-hover:    adjust-color($base-color, $saturation: 4%, $lightness: 5%);
+
+    @if $grayscale == true {
+      $base-color-hover: grayscale($base-color-hover);
+    }
+
+    background-color: $base-color-hover;
+    cursor: pointer;
+  }
+
+  &:active:not(:disabled),
+  &:focus:not(:disabled) {
+    $base-color-active: adjust-color($base-color, $saturation: -4%, $lightness: -5%);
+
+    @if $grayscale == true {
+      $base-color-active: grayscale($base-color-active);
+    }
+
+    background-color: $base-color-active;
+    cursor: pointer;
+  }
+}
+
+@mixin gradient($from, $to) {
+  background: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+  background: -moz-linear-gradient(top,  $from, $to);
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
+}
+/*
+* @include triangle within a pseudo element and add positioning properties (ie. top, left)
+* $direction: up, down, left, right
+*/
+@mixin triangle($direction, $size: 6px, $color: #222){
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0; width: 0;
+  @if ($direction == 'up'){
+    border-bottom: $size solid $color;
+    border-left: 1/2*$size solid transparent;
+    border-right: 1/2*$size solid transparent;
+  }
+  @else if ($direction == 'down'){
+    border-top: $size solid $color;
+    border-left: 1/2*$size solid transparent;
+    border-right: 1/2*$size solid transparent;
+  }
+  @else if ($direction == 'left'){
+    border-top: 1/2*$size solid transparent;
+    border-bottom: 1/2*$size solid transparent;
+    border-right: $size solid $color;
+  }
+  @else if ($direction == 'right'){
+    border-top: 1/2*$size solid transparent;
+    border-bottom: 1/2*$size solid transparent;
+    border-left: $size solid $color;
+  }
+}
+@mixin ghostVerticalAlign(){
+  &:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%; width: .1px;
+  }
+}
+@mixin box-sizing($box) {
+  @include prefixer(box-sizing, $box, webkit moz spec);
+}

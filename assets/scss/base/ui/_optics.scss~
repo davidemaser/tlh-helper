@@ -1,0 +1,80 @@
+.alpha{
+  &_0{
+    @include opacity(0);
+  }
+  &_10{
+    @include opacity(01);
+  }
+  &_20{
+    @include opacity(02);
+  }
+  &_30{
+    @include opacity(03);
+  }
+  &_40{
+    @include opacity(04);
+  }
+  &_50{
+    @include opacity(05);
+  }
+  &_60{
+    @include opacity(06);
+  }
+  &_70{
+    @include opacity(07);
+  }
+  &_80{
+    @include opacity(08);
+  }
+  &_90{
+    @include opacity(09);
+  }
+  &_100{
+    @include opacity(1);
+  }
+}
+.round{
+  border-radius: 25%;
+}
+.shadow{
+  @include box-shadow(0, 0, 20px, 0, #000);
+}
+.text-shadow{
+  @include text-shadow(0px, 0px, 10px, rgba(0,0,0,1));
+}
+.border{
+  &_null{
+    border:none;
+  }
+  &_all{
+    border:1px solid #000;
+  }
+  &_horizontal{
+    border-left:1px solid #000;
+    border-right:1px solid #000;
+  }
+  &_vertical{
+    border-top:1px solid #000;
+    border-bottom:1px solid #000;
+  }
+  &_top{
+    border-top:1px solid #000;
+  }
+  &_left{
+    border-left:1px solid #000;
+  }
+  &_bottom{
+    border-bottom:1px solid #000;
+  }
+  &_right{
+    border-right:1px solid #000;
+  }
+}
+.color{
+  &_light-grey{
+    background-color: #ccc;
+  }
+  &_dark-grey{
+    background-color: #999;
+  }
+}

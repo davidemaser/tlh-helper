@@ -1,0 +1,16 @@
+.callout {
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px;
+  &.alert{
+    border-left-color: #FF0000;
+  }
+  &.confirmation{
+    border-left-color: #75B32F;
+  }
+  &.warning{
+    border-left-color: #F1FF00;
+  }
+}

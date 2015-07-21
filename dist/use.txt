@@ -1,0 +1,10 @@
+Use simple semantic rules to compound css styles. For example: <div class="pad_5_horizontal"> will
+add a 5 pixel horizontal padding to the div. Teh semantic rules follows a what, how much, where flow.
+What = Padding
+How Much = 5 Pixels
+Where = Horizontal bounds.
+
+A compound denominator (i.e. null) can remove that attribute. For example class="pad_null" will reset
+the div's padding to 0.
+
+See demo folder in the package DIST folder.

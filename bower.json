@@ -1,0 +1,39 @@
+{
+  "name": "altitude-bootstrap",
+  "version": "1.0.1",
+  "authors": [
+    "david Maser <david.maser@altitude-sports.com>"
+  ],
+  "description": "A function and style bootstrap for Altitude Sports web sites and Apps",
+  "main": "assets/globals.scss",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "Bootstrap",
+    "Altitude",
+    "SCSS",
+    "CSS",
+    "JavaScript",
+    "Styles",
+    "Components",
+    "UI"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "animate.css": "~3.3.0",
+    "fontawesome": "~4.3.0",
+    "impress.js": "~0.5.3",
+    "ionicons": "~2.0.1",
+    "material-design-icons": "~2.0.0",
+    "reveal.js": "~3.1.0"
+  }
+}
